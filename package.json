@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node gateway/server.js",
     "nlp": "node nlp-service/server.js",
-    "worker": "node workers/fallbackWorker.js"
+    "worker": "node workers/fallbackWorker.js",
+    "build:admin": "cd admin-dashboard && npm install && npm run build",
+    "start:local": "node gateway/server.js"
   },
   "dependencies": {
     "axios": "^1.4.0",
