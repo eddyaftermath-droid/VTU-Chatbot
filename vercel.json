@@ -1,1 +1,16 @@
-
+{
+  "version": 2,
+  "builds": [
+    { "src": "gateway/api/*.js", "use": "@vercel/node" },
+    { "src": "admin-dashboard/package.json", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "src": "/webhook/payments/(.*)", "dest": "/gateway/api/index.js" },
+    { "src": "/webhook(.*)", "dest": "/gateway/api/index.js" },
+    { "src": "/admin/(.*)", "dest": "/admin-dashboard/dist/$1" },
+    { "src": "/", "dest": "/admin-dashboard/dist/index.html" }
+  ],
+  "functions": {
+    "gateway/api/*.js": { "memory": 1024, "maxDuration": 30 }
+  }
+}
