@@ -7,8 +7,11 @@ const webhookRoutes = require('./routes/webhook');
 const paymentsWebhook = require('./routes/paymentsWebhook');
 const knex = require('knex');
 
-const app = express();
+const app = require('./app);
 app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Gateway listening on port', PORT));
 
 const dbFile = path.resolve(__dirname, '..', 'data', 'dev.sqlite');
 const sqlFile = path.resolve(__dirname, '..', 'sql', 'schema.sql');
